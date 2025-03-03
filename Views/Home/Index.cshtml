@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Merriweather', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        h1, h3 {
+            font-weight: 700;
+            color: #FFF;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-weight: 400;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #d4cdcd;
+        }
+
+        .hero-section {
+            position: relative;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*6Jp3vJWe7VFlFHZ9WhSJng.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
+
+            .hero-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5); /* Adjust the opacity */
+                z-index: 1;
+            }
+
+        .hero-title,
+        .hero-subtitle,
+        .cta-button {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            margin: 10px 0;
+        }
+
+        .cta-button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #8B0000;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+            .cta-button:hover {
+                background-color: #5C4033;
+            }
+
+
+        /* Search Bar */
+        .search-bar {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-input {
+            padding: 12px 20px;
+            width: 60%;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .search-button {
+            background-color: #4b2e1d;
+            color: white;
+            padding: 12px 20px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+            .search-button:hover {
+                background-color: #6a4029;
+            }
+
+        /* Category Filter */
+        .category-filter {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .category-select {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            width: 250px;
+        }
+
+        /* Featured Books Section */
+        .featured-books {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .book-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 550px; /* Set a fixed height */
+            overflow: hidden; /* Prevent content from overflowing */
+        }
+
+        .book-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+
+        }
+
+        .book-title {
+            font-size: 22px;
+            margin-top: 15px;
+            font-weight: 700;
+            color: #2a2a2a;
+        }
+
+        .book-description {
+            margin-top: 10px;
+            font-weight: 400;
+            color: #555;
+            overflow: hidden; /* Prevent text from overflowing */
+            text-overflow: ellipsis; /* Optional: add ellipsis if the text overflows */
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limit the number of lines for description */
+            -webkit-box-orient: vertical;
+        }
+
+
+            .book-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            }
+
+
+
+        /* Rating System */
+        .rating {
+            display: flex;
+            gap: 5px;
+            margin-top: 10px;
+
+        }
+
+        .star {
+            font-size: 20px;
+            color: #ff9f00;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            margin-top: 60px;
+            width: 100%;
+            position: relative;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">Welcome to Our Bookstore</h1>
+            <p class="hero-subtitle">Your favorite place to discover new books and stories</p>
+            <a href="#" class="cta-button">Shop Now</a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search for books...">
+            <button class="search-button">Search</button>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <label for="category" style="font-weight: 700;">Filter by Category:</label>
+            <select id="category" class="category-select">
+                <option value="all">All</option>
+                <option value="fiction">Fiction</option>
+                <option value="nonfiction">Non-Fiction</option>
+                <option value="mystery">Mystery</option>
+            </select>
+        </div>
+
+        <!-- Featured Books Section -->
+        <div class="featured-books">
+            <div class="book-card">
+                <img src="https://covers.openlibrary.org/b/id/8225265-L.jpg" class="book-img" alt="To Kill a Mockingbird">
+                <h3 class="book-title">To Kill a Mockingbird</h3>
+                <p class="book-description">Harper Lee's Pulitzer Prize-winning novel about the racial injustice in the deep South, as seen through the eyes of Scout Finch, a young girl in the 1930s.</p>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">☆</span>
+                </div>
+                <a href="#" class="cta-button">Buy Now</a>
+            </div>
+            <div class="book-card">
+                <img src="https://covers.openlibrary.org/b/id/7844857-L.jpg" class="book-img" alt="1984">
+                <h3 class="book-title">1984</h3>
+                <p class="book-description">George Orwell’s dystopian novel about a totalitarian regime that employs extreme surveillance, propaganda, and oppression to control the citizens of Oceania.</p>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">☆</span>
+                </div>
+                <a href="#" class="cta-button">Buy Now</a>
+            </div>
+            <div class="book-card">
+                <img src="https://covers.openlibrary.org/b/id/10517962-L.jpg" class="book-img" alt="Pride and Prejudice">
+                <h3 class="book-title">Pride and Prejudice</h3>
+                <p class="book-description">Jane Austen’s classic story of the Bennett family and their social entanglements, with a particular focus on Elizabeth Bennet and her evolving relationship with the enigmatic Mr. Darcy.</p>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <a href="#" class="cta-button">Buy Now</a>
+            </div>
+            <div class="book-card">
+                <img src="https://covers.openlibrary.org/b/id/8298766-L.jpg" class="book-img" alt="The Great Gatsby">
+                <h3 class="book-title">The Great Gatsby</h3>
+                <p class="book-description">F. Scott Fitzgerald's novel about the American Dream, following the mysterious millionaire Jay Gatsby as he tries to win back his lost love, Daisy Buchanan, in 1920s New York.</p>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">☆</span>
+                </div>
+                <a href="#" class="cta-button">Buy Now</a>
+            </div>
+            <div class="book-card">
+                <img src="https://covers.openlibrary.org/b/id/9820865-L.jpg" class="book-img" alt="Moby-Dick">
+                <h3 class="book-title">Moby-Dick</h3>
+                <p class="book-description">Herman Melville’s epic tale of the obsessive quest of Captain Ahab for revenge on Moby Dick, the great white whale that maimed him.</p>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">☆</span>
+                    <span class="star">☆</span>
+                </div>
+                <a href="#" class="cta-button">Buy Now</a>
+            </div>
+            <div class="book-card">
+                <img src="https://covers.openlibrary.org/b/id/8375937-L.jpg" class="book-img" alt="The Catcher in the Rye">
+                <h3 class="book-title">The Catcher in the Rye</h3>
+                <p class="book-description">J.D. Salinger's story of Holden Caulfield, a teenager who’s been expelled from an elite prep school and spends days wandering New York City while reflecting on his life and feelings of alienation.</p>
+                <div class="rating">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <a href="#" class="cta-button">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</body>
+<!-- Footer -->
+<div class="footer">
+    <p>&copy; 2024 Bookstore. All Rights Reserved.</p>
+</div>
+</html>
